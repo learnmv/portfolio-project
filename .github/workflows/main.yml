@@ -1,0 +1,30 @@
+# A name for your workflow
+name: Simple CI
+
+# 1. Define the trigger (the event that starts the workflow)
+on:
+  push:
+    branches: [ "main" ] # Only runs on pushes to the main branch
+  pull_request:
+    branches: [ "main" ] # Also runs on pull requests to the main branch
+
+# 2. Define the jobs that will run
+jobs:
+  # Give the job a unique ID (e.g., build)
+  build:
+    # 3. Specify the runner (the virtual machine to run on)
+    runs-on: ubuntu-latest
+
+    # 4. Define the steps for the job
+    steps:
+      # A descriptive name for the step
+      - name: A simple echo command
+        # The command to execute
+        run: echo "Hello, GitHub Actions! 🎉"
+
+      # This is a pre-built action that checks out your repository's code
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Another step
+        run: echo "The workflow has checked out the code."
